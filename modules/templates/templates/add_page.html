@@ -1,0 +1,29 @@
+<div id="custom-content" class="popup_block">
+	<div id="check"></div>
+	
+	<div class="form_left">Lang</div>
+	<div class="form_right">{{:lang:}}</div>
+	
+	<div class="form_left">Page type</div>
+	<div class="form_right">{{:page_type:}}</div>
+	<div class="form_right">Module:{{:module_list:}}</div>
+	<div class="form_right">Custom page{{:custom_page:}}</div>
+	
+	<div class="form_left">Template file</div>
+	<div class="form_right">{{:template_file:}}</div>
+	
+	<div class="form_left"><input type="button" id="add_page" value="save"></div>
+</div>
+<script type="text/javascript">
+$("#add_page").click(function(){
+	$.post('post.php?module={{:module:}}&template_id={{:tmpl_id:}}', {'add_page' : '1', 'lang' : $("#lang").val(), 'page_type' : $("#page_type").val(), 'modules' : $("#modules").val(), 'custom_page' : $("#custom_page").val(), 'template_file' : $("#template_file").val()})
+		.done(function(data){
+				if(data == "ok"){
+					redirect('admin.php?module={{:module:}}&page=template_details&tmpl_id={{:tmpl_id:}}')
+				}
+				else{
+					alert(data);//error_message(data);
+				}
+			});
+})
+</script>

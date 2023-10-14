@@ -1,0 +1,16 @@
+.menu_item_inside_horizontal a:link,
+.menu_item_inside_horizontal a:visited,
+.menu_item_inside_horizontal a:active{
+	font-size: 15px;
+}
+
+ul.menu_horizontal ul li a:link,
+ul.menu_horizontal ul li a:visited,
+ul.menu_horizontal ul li a:active{
+	font-size: 15px;
+	background: #2CA5DE;
+}
+
+ul.menu_horizontal .menulink {
+	margin-right: 20px !important;
+}

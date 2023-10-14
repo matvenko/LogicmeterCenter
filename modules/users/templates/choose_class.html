@@ -1,0 +1,26 @@
+<style>
+	.math_subject {
+		border-right: 1px solid #e9e9e9
+	}
+</style>
+<h4>{{:_CHOOSE_DIRECTION:}}</h4>
+<div class="registration">
+	<div id="choose_direction">
+		<input type="hidden" id="subject" name="subject" value="{{:subject:}}">
+		[:subjects:]
+		<div class="styled_checkbox">
+			{{:subject:}}
+			<label for="subject_{{:subject_alias:}}">
+				{{:subject_name:}}<br>
+				<span style="font-size: 14px" class="marked_text">{{:description:}}</span><br>
+			</label>
+		</div>
+		[:subjects:]
+	</div>
+	<div style="clear: both"></div>
+	{{:subject_body:}}
+</div>
+
+<input type="hidden" name="subject" id="var_subject" value="{{:subject:}}">
+<input type="hidden" name="child_id" id="var_child_id" value="{{:child_id:}}">
+<input type="hidden" name="user_id" id="var_user_id" value="{{:user_id:}}">

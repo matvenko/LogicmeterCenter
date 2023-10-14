@@ -1,0 +1,37 @@
+<div class="userLoginPane" style="padding-bottom: 30px">
+	<div class="choose_profile_main">
+		<div><h3>{{:_CHOOSE_PROFILE:}}</h3></div>
+		<div class="user_image" style="background-image: url('{{:user_image:}}')"></div>
+		<div class="profile_name" data-child_id="0">{{:name_surname:}}</div>
+		[:profiles:]
+		<div class="user_image" style="background-image: url('{{:user_image:}}')"></div>
+		<div class="profile_name" data-child_id="{{:child_id:}}">{{:name_surname:}}</div>
+		[:profiles:]
+	</div>
+	<div class="go_to_profile">
+		<a href="logout.php"><b>&larr; {{:_LOGOUT:}}</b></a>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(".profile_name").click(function(){
+	$.post('clear_post.php?module={{:module:}}&page=login', {choose_profile: 1, child_id: $(this).attr('data-child_id')})
+	.done(function(data){
+		if(data == 'ok'){
+			if($(".userLoginPane_default").length !== 0) {
+				reload();
+			}
+			else{
+				$.get('body.php?module={{:module:}}&page=auth_main_page')
+				.done(function(data){
+					$("#login_main_page").html(data);
+				})
+			}
+		}
+		else{
+			$("#login_error").css('display', 'block');
+			$("#login_error").html(data);
+		}
+	})
+})
+</script>

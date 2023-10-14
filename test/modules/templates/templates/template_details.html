@@ -1,0 +1,52 @@
+<!-- <script language="javascript" type="text/javascript" src="functions/edit_area/edit_area_full.js"></script>
+<script language="javascript" type="text/javascript">
+editAreaLoader.init({
+	id : "textarea_1"		// textarea id
+	,syntax: "html"			// syntax to be uses for highgliting
+	,start_highlight: true		// to display with highlight mode on start-up
+});
+</script>
+</head>
+<body>
+<form method="post">
+	<textarea id="textarea_1" name="content" style="width: 800px; height: 600px;">{{:template_source:}}</textarea>
+
+</form> -->
+<div id="check"></div>
+<div class="tmpl_pages_list">
+	<div class="tmpl_add_page">
+		<a class="popup" href="post.php?module={{:module:}}&page=add_page&tmpl_id={{:tmpl_id:}}&v=1">{{:add:}} Add page</a>
+	</div>
+	[:pages_list:]
+	<div class="tmpl_page">
+		<a href="admin.php?module={{:module:}}&page=template_details&tmpl_id=1&page_id={{:page_id:}}">{{:page_type:}}</a>
+	</div>
+	[:pages_list:]
+</div>
+
+<div class="tmpl_page_details">
+	<div class="form_left">Lang</div>
+	<div class="form_right">{{:lang:}}</div>
+	
+	<div class="form_left">Template file</div>
+	<div class="form_right">{{:template_file:}}</div>
+	
+	<div class="form_left">Last cache time</div>
+	<div class="form_right">{{:last_cache_time:}}</div>
+
+	<div class="form_left">
+		<input type="button" value="Generate" id="generate_tmpl">
+	</div>
+</div>
+
+<script type="text/javascript">
+<!--
+
+$("#generate_tmpl").click(function(){
+	$.post('post.php?module={{:module:}}', {'generate_tmpl' : '1', 'tmpl_page_id' : '{{:tmpl_page_id:}}'})
+		.done(function(data){
+			error_message(data);
+			});
+})
+//-->
+</script>

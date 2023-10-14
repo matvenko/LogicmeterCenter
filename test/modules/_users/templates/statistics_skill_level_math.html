@@ -1,0 +1,86 @@
+[:default:]
+<div id="statistic_content">
+[:default:]
+
+<div class="chart">
+	<div class="chart_title">{{:_CHART_TITLE:}}</div>
+	<div id="legend_div" style="float: right"></div>
+	<div class="chart_chart"><canvas id="canvas" height="300" width="300"></canvas></div>
+	<div class="chart_bottom_label">{{:_BOTTOM_LABEL:}}</div>
+</div>
+<div id="legend_div"></div>
+
+<table class="statistic_table statistic_skill_level_table">
+  <tr>
+    <th style="text-align: left"><div style="padding-left: 10px">{{:_GRADE:}}, {{:_SKILL:}}</div></th>
+    <th style="width: 150px">{{:_DONE_SKILLS:}}</th>
+    <th style="width: 150px">{{:_AVARAGE_POINTS:}}</th>
+    <th style="width: 150px">{{:_PROGRESS:}}</th>
+  </tr>
+  [:grades:]
+  <tr>
+    <td class="grade" data-id="{{:grade_id:}}" style="text-align: left">
+    	<div style="padding-left: 10px">{{:grade_number:}}. {{:grade_name:}}</div>
+    </td>
+    <td style="text-align: center;">{{:done_skills:}}</td>
+    <td style="text-align: center;">{{:sum_point:}}</td>
+    <td style="text-align: center;">{{:progress:}}%</td>
+  </tr>
+  {{:parent_skills:}}
+  [:grades:]
+  [:parent_skills:]
+  <tr class="parent_skills parent_skill_{{:grade_id:}}">
+    <td style="padding-left: 25px; text-align: left;" class="parent_skill" data-id="{{:id:}}">
+    	{{:priority:}}. {{:skill_title:}}
+    </td>
+    <td style="text-align: center;">{{:done_skills:}}</td>
+    <td style="text-align: center;">{{:sum_point:}}</td>
+    <td style="text-align: center; color: {{:progress_color:}}">{{:progress:}}%</td>
+  </tr>
+  {{:skills:}}
+  [:parent_skills:]
+  [:skills:]
+  <tr class="skills skill_{{:parent_id:}}">
+    <td style="padding-left: 40px; text-align: left" class="skill">{{:skill_number:}}. {{:skill_name:}}</td>
+    <td style="text-align: center;">{{:done_skills:}}</td>
+    <td style="text-align: center;">{{:sum_point:}}</td>
+    <td style="text-align: center; color: {{:progress_color:}}">{{:progress:}}%</td>
+  </tr>
+  [:skills:]
+</table>
+
+<script type="text/javascript">
+$(".grade").click(function(){
+	$(".parent_skill_"+$(this).attr('data-id')).toggle(400);
+})
+
+$(".parent_skill").click(function(){
+	$(".skill_"+$(this).attr('data-id')).toggle(400);
+})
+
+//***** pie
+var pieData = [
+	[:pie_grades:]
+	{
+		value: {{:progress:}},
+		color: "{{:grade_color:}}",
+		highlight: "{{:grade_color:}}",
+		label: "{{:grade_name:}}"
+	},
+	[:pie_grades:]
+	{
+		value: {{:undone_progress:}},
+		color: "#F2F2F2",
+		highlight: "#F2F2F2",
+		label: "{{:_UNDONE_SKILLS:}}"
+	}
+			];
+
+var ctx = document.getElementById("canvas").getContext("2d");
+window.myPie = new Chart(ctx).Pie(pieData);
+document.getElementById("legend_div").innerHTML = myPie.generateLegend();
+</script>
+
+[:default:]
+</div>
+[:default:]

@@ -1,0 +1,45 @@
+<form id="login_form" method="post" action="clear_post.php?module={{:module:}}&page=login" onsubmit="return false">
+	[:login_title:]
+	<div class="login_title">{{:_AUTHORIZATION:}}</div>
+	[:login_title:]
+	<div id="login_error"></div>
+	<div class="userLoginPane">
+		<div class="user">
+			<input type="text" id="username" name="username" placeholder="{{:_USERNAME:}}...">
+		</div>
+		<div class="password">
+			<input type="password" id="password" name="password" placeholder="{{:_PASSWORD:}}...">
+		</div>
+	</div>
+	<div class="userControlsPane">
+		<input type="submit" id="login_button" name="login" value="{{:_LOGIN_TO_SYSTEM:}}"/>
+		<span><a href="index.php?module=users&page=restore_password">{{:_RESTORE_PASSWORD:}}</a></span>
+	</div>
+</form>
+
+<form id="login_form2" method="post"
+      action="{{:location_logicmeter:}}clear_post.php?module={{:module:}}&page=login"></form>
+
+<script type="text/javascript">
+
+	$("#login_form").submit(function () {
+		$.post('clear_post.php?module={{:module:}}&page=login', {
+			login: 1,
+			username: obj_value('username'),
+			password: obj_value('password'),
+			login_type: 'ajax'
+		})
+			.done(function (data) {
+				if (data == 'ok') {
+					$("#login_form2").append('<input type="hidden" name="login" value="1">');
+					$("#login_form2").append('<input type="hidden" name="username" value="' + $("#username").val() + '">');
+					$("#login_form2").append('<input type="hidden" name="password" value="' + $("#password").val() + '">');
+					$("#login_form2").submit();
+				}
+				else {
+					$("#login_error").css('display', 'block');
+					$("#login_error").html(data);
+				}
+			})
+	})
+</script>

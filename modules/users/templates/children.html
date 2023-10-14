@@ -1,0 +1,75 @@
+<div class="children">
+	[:parent:]
+	<a href="body.php?module={{:module:}}&page=add_child&type=popup" class="add_button popup">{{:_ADD_CHILD:}}</a>
+	<a href="body.php?module={{:module:}}&page=change_package&type=popup&custom_style=change_package" class="add_button popup blue_button">{{:_CHANGE_PACKAGE:}}</a>
+	[:parent:]
+	<form method="post" action="clear_post.php?module={{:module:}}"	onsubmit="return false">
+		<table class="statistic_table" cellpadding="5">
+			<tr>
+				<th style="width: 100px"></th>
+				<th style="width: 200px; text-align: left">{{:_NAME:}}, {{:_SURNAME:}}</th>
+				<th style="width: 100px">{{:_BIRTHDATE:}}</th>
+				[:parent:]
+				<th style="width: 100px">{{:_STATUS:}}</th>
+				<th style="width: 100px">{{:_PACKAGE:}}</th>
+				<th style="width: 160px" colspan=2>	</th>
+				[:parent:]
+			</tr>
+			[:children:]
+			<tr>
+				<td class="{{:child_status:}}"><div class="user_image" style="background-image: url('{{:child_image:}}')"></div></td>
+				<td class="{{:child_status:}}">{{:name:}} {{:surname:}}</td>
+				<td class="{{:child_status:}}" style="text-align: center">{{:birthdate:}}</td>
+				[:parent:]
+				<td class="{{:child_status:}}" style="text-align: center; color: {{:paid_color:}}">{{:paid:}}</td>
+				<td class="{{:child_status:}}" style="text-align: center">{{:package:}}</td>
+				<td style="width: 30px; text-align: center">
+					<div class="{{:child_status:}}">
+					<a class="popup" href="body.php?module={{:module:}}&page=add_child&child_id={{:id:}}&type=popup">{{:edit:}}</a>
+					</div>
+				</td>
+				<td style="width: 30px; text-align: center">
+					<div class="deactivate" id="{{:id:}}">
+						{{:deactivate:}}
+					</div>
+				</td>
+				[:parent:]
+			</tr>
+			[:children:]
+			
+			[:parent:]
+			[:payment_amount:]
+			<tr>
+				<td colspan="7">
+					<div class="payment_amount" style="float: left">
+						<strong>{{:payment_amount:}}</strong> 
+						<strong><strike>{{:payment_amount_no_discount:}}</strike></strong> 
+						<span style="color: red">{{:payment_amount_with_discount:}}</span>
+						<img src="images/gel.png" border=0 alt="ლ">
+					</div>
+					<div class="payment_amount"><a href="index.php?module={{:module:}}&page=profile&type=make_payment" class="add_button">{{:_START_PAYMENT:}}</a></div>
+				</td>
+			</tr>
+			[:payment_amount:]
+			[:parent:]
+		</table>
+	</form>
+</div>
+
+<script type="text/javascript">
+$('.disabled_child a').removeClass('popup');
+$('.disabled_child a').bind('click', false);
+
+//***** deactivate
+$(".deactivate").click(function(){
+	$.get('clear_post.php?module={{:module:}}', {action: 'deactivate_child', child_id: this.id})
+		.done(function(data){
+			if(data == "ok"){
+				redirect('');
+			}
+			else{
+				alert(data);
+			}
+		})
+})
+</script>

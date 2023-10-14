@@ -1,0 +1,162 @@
+<header>
+	<div class="back">
+	<div class="wrapper">
+		<div id="logo"></div>
+		<div id="menu">
+			{{:clear_post.php?module=menu&page=main&menu_id=2:}}
+		</div>
+	</div>
+	</div>
+</header>
+<div id="content">
+	<div id="slider">
+		<div id="slider_body" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 700px; overflow: hidden">
+			{{:clear_post.php?module=topic&page=slider&topic_id=5:}}
+		</div>
+		<div class="wrapper" style="height: auto">
+			<div class="registerLogin">
+				{{:clear_post.php?module=users&page=login_main_page:}}
+			</div>
+			<!-- <div class="go_to_logicmeter">
+				<a href="http://logicmeter.com"><img src="images/go_to_logicmeter.png" border="0"></a>
+			</div> -->
+			<!-- <div class="sliderLeft"></div>
+			<div class="sliderRight"></div>
+			<div class="sliderText">
+				
+				<div class="bullets">
+					<div></div>
+					<div class="active"></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div> -->
+		</div>
+	</div>
+	<div id="learning">
+		<div class="wrapper">
+			<h1>{{:_LEARNING:}}</h1>
+			<h2>{{:_IN_LOGICCENTER:}}</h2>
+			<div style="margin-top: 10px; text-align: center"><img src="images/tel.png"></div>
+			<div class="learnBullet" id="math">
+				<h1>{{:_MATH:}}</h1>
+			</div>
+			<div class="learnBullet" id="logic">
+				<h1>{{:_LOGIC:}}</h1>
+			</div>
+			<div class="learnBullet" id="books">
+				<h1>{{:_LITERACY:}}</h1>
+			</div>
+			<div class="prices"> {{:clear_post.php?module=text&page=text&link_id=13:}}</div>
+		</div>
+	</div>
+	<div id="classes">
+		<div class="wrapper">
+			<div class="text">{{:clear_post.php?module=text&page=text&link_id=30:}}</div>
+			<div class="classBullets">
+				<h1>{{:_CLASSES:}}</h1>
+				<br />
+				{{:clear_post.php?module=text&page=text&link_id=20:}}
+			</div>
+		</div>
+	</div>
+	<div id="steps">
+		<div class="wrapper">
+			<div id="cloud1"></div>
+			<div id="cloud2"></div>
+			{{:clear_post.php?module=text&page=text&link_id=31:}}
+			<a class="btnFull" href="text-6.html">{{:_LERNING_PLANS_ALL:}}</a>
+		</div>
+	</div>
+	<div style="clear: both"></div>
+	<div id="methods">
+		<div class="wrapper">
+			<div id="methodIco1"></div>
+			<div id="methodIco2"></div>
+			<div id="methodIco3"></div>
+			<div id="methodIco4"></div>
+			<div id="methodIco5"></div>
+			<h1>{{:_METHODOLOGY:}}</h1>
+			<div class="method" id="method1">
+				<div class="methodIcon"></div>
+				<div class="methodText">
+					{{:clear_post.php?module=text&page=text&link_id=22:}}
+				</div>
+			</div>
+			<div class="method" id="method2">
+				<div class="methodIcon"></div>
+				<div class="methodText">
+					{{:clear_post.php?module=text&page=text&link_id=23:}}
+				</div>
+			</div>
+			<div class="method" id="method3">
+				<div class="methodIcon"></div>
+				<div class="methodText">
+					{{:clear_post.php?module=text&page=text&link_id=12:}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<a id="register" href="index.php?module=users&page=register">
+		<div>
+			<img src="images/register.png" /> {{:_REGISTRATION:}}
+		</div>
+	</a>
+	<div id="videos">
+		<div class="wrapper">
+			<div class="left"></div>
+			<div class="right"></div>
+			<a href="topic-6.html"><h1>{{:_VIDEOS:}}</h1></a>
+			<input type="hidden" id="video_slider_cont" name="video_slider_cont" value="0">
+			<div class="videos">
+				{{:clear_post.php?module=topic&page=main&topic_id=6:}}
+			</div>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="footerMenu">
+		<div class="wrapper">
+			{{:clear_post.php?module=text&page=text&link_id=5:}}
+		</div>
+	</div>
+	<div class="footerCopy">© 2015 LogicMeter, ყველა უფლება დაცულია</div>
+</footer>
+
+<script type="text/javascript">
+/* slider */
+$(".right").click(function(){
+	if($(".video_slider").length - $(".video_slider_hide").length > 3){
+		$(".video_slider").each(function(i) {
+			if($("#video_slider_cont").val() == i){
+				$(this).addClass("video_slider_hide");
+			}
+		});
+		$("#video_slider_cont").val(parseInt($("#video_slider_cont").val()) + 1)
+	}
+})
+$(".left").click(function(){
+	if($(".video_slider_hide").length > 0){
+		$(".video_slider").each(function(i) {
+			if($("#video_slider_cont").val() == i + 1){
+				$(this).removeClass("video_slider_hide");
+			}
+		});
+		$("#video_slider_cont").val(parseInt($("#video_slider_cont").val()) - 1)
+	}
+})
+
+$(document).scroll(function(){
+	if($(window).scrollTop() > 400){
+		var opacity = $(window).scrollTop() < 700 ? roundNumber($(window).scrollTop()/500) : 0.8;
+		$("header").css("background", "rgba(0, 0, 0, "+opacity+")");
+		$("ul.menu_horizontal ul li a").css("background", "rgba(0, 0, 0, "+opacity+")");
+	}
+	else{
+		$("header").css("background", "rgba(0, 0, 0, 0.4)");
+		$("ul.menu_horizontal ul li a").css("background", "rgba(0, 0, 0, 0.4)");
+	}
+})
+</script>

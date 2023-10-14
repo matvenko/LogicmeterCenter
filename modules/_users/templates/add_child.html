@@ -1,0 +1,108 @@
+[:caution:]
+<div class="caution" style="display: block;">{{:_CANT_ADD_CHILD_WHILE_UNPAID:}}</div>
+[:caution:]
+
+[:content:]
+<script type="text/javascript" src="functions/jquery.form.js"></script>
+[:image:]
+<div class="add_child_image_img">
+	<div class="image"><img id="image" src="{{:child_image:}}"></div>
+	<form id="upload_form" action="clear_post.php?module={{:module:}}&child_id={{:child_id:}}" method="post" enctype="multipart/form-data">
+		<label class="upload_file_label">
+		    <input type="file" id="child_image" name="child_image" required>
+		    <span>{{:_UPLOAD_IMAGE:}}</span>
+		</label>			
+		<input type="hidden" id="add_child_image" name="add_child_image" value="1">
+	</form>
+	<div class="upload_progress">
+        <div class="upload_progress_bar"></div >
+    </div>	
+</div>
+[:image:]	
+
+<div class="registration" id="child_{{:child_n:}}" style="border: none">
+	<div id="check"></div>
+	<form id="add_child_form" method="post" action="clear_post.php?module={{:module:}}&child_id={{:child_id:}}" onsubmit="return false">
+		<div class="child_n">{{:child_n:}}</div>
+		<div class="registration_in_left"><p>{{:_NAME:}}{{:star:}}</p></div>
+		<div class="registration_in_right">{{:name:}}</div>
+		
+		<div class="registration_in_left"><p>{{:_SURNAME:}}{{:star:}}</p></div>
+		<div class="registration_in_right">{{:surname:}}</div>
+		
+		<div class="registration_in_left"><p>{{:_BIRTHDATE:}}{{:star:}}</p></div>
+		<div class="registration_in_right">
+				{{:birthdate_year:}}
+				{{:birthdate_month:}} 
+				{{:birthdate_day:}}
+		</div>
+			
+		<div class="registration_button" style="clear: both; margin-bottom: 20px">
+			<input type="hidden" name="add_child" id="add_child" value="0">
+			<input class="button" type="submit" id="submit" value="{{:_SAVE:}}"/>
+		</div>
+	</form>
+</div>
+
+
+<script type="text/javascript">
+//**** submit form
+$("#add_child_form").submit(function(){
+	$("#submit").attr('disabled', 'disabled');
+	post_call('add_child', $("#submit"));
+});
+
+
+//**** file upload
+$("#child_image").change(function(){
+	$('#upload_form').submit();
+});
+
+//***** calculate month dayes
+$(".year_month").on("change", function(){
+	var year = $(this).parent().children('.year').val();
+	var month = $(this).parent().children('.month').val();
+	
+	dayes = jQuery.inArray(parseInt(month), [1, 3, 5, 7, 8, 10, 12]) !== -1 ? 31 : 30;
+	if(month == 2){
+		dayes = year % 4 == 0 ? 29 : 28;
+	}
+	$("#birthdate_day option").show();
+	for(i = 31; i > dayes; i--){
+		$("#birthdate_day option[value='"+i+"']").hide();
+	}
+});
+
+(function() {
+    
+var bar = $('.upload_progress_bar');
+var percent = $('.percent');
+var status = $('#status');
+   
+$('#upload_form').ajaxForm({
+    beforeSend: function() {
+        status.empty();
+        var percentVal = '0%';
+        bar.width(percentVal)
+        percent.html(percentVal);
+    },
+    uploadProgress: function(event, position, total, percentComplete) {
+
+        var percentVal = percentComplete + '%';
+        bar.width(percentVal)
+        percent.html(percentVal);
+    },
+    success: function(data) {
+        var percentVal = '100%';
+        bar.width(percentVal)
+        percent.html(percentVal);
+        error_message(data);
+    },
+	complete: function(xhr) {
+		status.html(xhr.responseText);
+	}
+}); 
+
+})(); 
+</script>
+[:content:]

@@ -1,0 +1,41 @@
+<div id="custom-content" class="popup_block" style="width: 750px">
+	<div id="action" class="ok"></div>
+	 <table border="0" width="400" height="150" style="background: #FFF;"> 
+	 	<tr> 
+ 			<td align="right"><b>New Password</b> </td> 
+ 			<td><input name="new_password" id="new_password" type="password"></td> 
+ 		</tr> 
+ 		<tr> 
+	 		<td align="right">
+					<input type="button" value="Copy" id="copy">
+					<input type="button" value="Generate" id="generate" style="cursor:pointer">
+				</td> 
+ 			<td><div id="gernerate_password" style="font-weight: bold; font-size: 16px"></div></td> 
+ 		</tr> 
+ 		<tr> 
+	 		<td align="right">&nbsp;</td> 
+ 			<td><input type="submit" name="chng_user_pass" id="chng_user_pass" value="Change"></td> 
+ 		</tr> 
+ 	</table> 
+
+</div>
+
+<script type="text/javascript">
+$("#generate").click(function(){
+	$.get('post.php?module={{:module:}}&page=admin_chng_pass', {action : 'chng_pass'})
+		.done(function(data){
+			$("#gernerate_password").html(data);
+		})
+});
+
+$("#copy").click(function(){
+	$("#new_password").val($("#gernerate_password").html());
+});
+
+$("#chng_user_pass").click(function(){
+	$.get('post.php?module={{:module:}}', {action : 'chng_user_pass', new_password : $("#new_password").val(), user_id : {{:user_id:}} })
+		.done(function(data){
+			$("#action").html(data);
+		})
+});
+</script>

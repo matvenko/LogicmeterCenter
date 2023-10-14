@@ -1,0 +1,107 @@
+<script type="text/javascript" src="functions/Chart.min.js"></script>
+<script type="text/javascript" src="functions/legend.js"></script>
+<link rel="stylesheet" href="style/jquery-ui.css"> 
+<form id="statistic_search_form" action="clear_post.php?module={{:module:}}&page=statistics_search" method="post" onsubmit="return false">
+<input type="hidden" name="statistic_page" id="statistic_page" value="{{:statistic_page:}}">
+<div id="check"></div>
+<div class="statistic_search">
+	[:date:]
+	<div class="date">
+    	<div class="statistic_search_calendar">
+    		<div>{{:date_from:}}</div>
+    		<div>{{:date_to:}}</div>
+    	</div>
+	    <div class="style_select" style="float: right; margin-right: 0">{{:date_types:}}</div>	    
+    </div>
+    [:date:]
+    <div class="row">
+		[:grade_theme:]
+		<div>{{:_CHILD:}} <div class="style_select">{{:children:}}</div></div>
+		[:grade:]
+		<div>{{:_GRADE:}} <div class="style_select">{{:grades:}}</div></div>
+		[:grade:]
+		[:theme:]
+	    <div>{{:_THEME:}} <div class="style_select" id="theme_select">{{:themes:}}</div></div>
+	    [:theme:]
+
+		[:grade_theme:]
+		<input type="hidden" name="statistic_search" id="statistic_search" value="0">
+		<input type="submit" name="update" id="statistic_search_button" value="{{:_UPDATE:}}">
+	</div>
+</div>
+</form>
+
+<script type="text/javascript">
+$(function() {
+	$( ".calendar" ).datepicker({
+		  monthNames: [ "{{:_JANUARY:}}", "{{:_FABRUARY:}}", "{{:_MARCH:}}", "{{:_APRIL:}}", "{{:_MAY:}}", "{{:_JUNE:}}", "{{:_JULY:}}", "{{:_AUGUST:}}", "{{:_SEPTEMBER:}}", "{{:_OCTOMBER:}}", "{{:_NOVEMBER:}}", "{{:_DECEMBER:}}" ],
+		  dayNamesMin: [ "{{:_W_OR:}}", "{{:_W_SAM:}}", "{{:_W_OTX:}}", "{{:_W_XUT:}}", "{{:_W_PAR:}}", "{{:_W_SHAB:}}", "{{:_W_KV:}}" ],
+		  firstDay: 1,
+		  dateFormat: "yy-mm-dd"
+		});
+    $( ".calendar" ).datepicker();
+  });
+
+  
+function update_statistic(parameters){
+	$.post('body.php?module={{:module:}}&page='+parameters.statistic_page, parameters)
+		.done(function(data){
+			$("#statistic_content").html(data);
+		})
+	/* var request = $.ajax({
+        url: 'body.php?module={{:module:}}&page='+parameters.statistic_page,
+        type: 'POST',
+        data: parameters,
+        dataType: 'json',
+        success: function(data){alert('dfsd');
+			//$("#statistic_content").html('dfdf');
+		}
+	}); */
+}
+
+//**** change date_types
+function date_fromat(date){
+	yyyy = date.getFullYear();
+	mm = ('0' + (date.getMonth() + 1)).slice(-2);
+	dd = ('0' + date.getDate()).slice(-2);
+	
+	return yyyy + '-' + mm + '-' + dd;
+}
+$("#date_types").change(function(){
+	var now = new Date();
+	var d = new Date();
+	
+	switch(this.value){
+	case "1":
+		d.setDate(now.getDate() - 7);
+		break;
+	case "2":
+		d.setMonth(now.getMonth() - 1);
+		break;
+	case "3":
+		d.setMonth(now.getMonth() - 3);
+		break;
+	case "4":
+		d.setMonth(now.getMonth() - 6);
+		break;
+	case "5":
+		d.setMonth(now.getMonth() - 12);
+		break;
+	}
+	
+	$("#date_from").val(date_fromat(d));
+	$("#date_to").val(date_fromat(now));
+})
+
+//***** change grade
+$("#grade").change(function(){
+	$.get('clear_post.php?module={{:module:}}&page=statistics_search', {action: 'show_grade_themes', grade_id: this.value})
+		.done(function(data){
+			$("#theme_select").html(data);
+		})
+})
+
+$("#statistic_search_form").submit(function(){
+	post_call('statistic_search', this);
+})
+</script>

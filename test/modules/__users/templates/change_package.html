@@ -1,0 +1,78 @@
+[:caution:]
+<div class="caution" style="display: block;">{{:_PACKAGE_CANT_CHANGE_WHILE_UNPAID:}}</div>
+[:caution:]
+
+[:content:]
+<form id="change_package_form" action="clear_post.php?module={{:module:}}" onsubmit="return false">
+<div id="check"></div>
+<div class="Checkout_main" style="width: 600px">
+	<div class="money" style="margin-right: 50px">
+		<h2>{{:_PAYMENT_AMOUNT:}}</h2>
+		<h3><span id="payment_price">{{:payment_amount:}}</span> <img src="images/gel_white.png" border=0 alt="ლ"></h3>
+	</div>
+	<p style="width: 160px">{{:_CHOOSE_PERIOD:}}</p>
+	{{:period:}}
+	<p style="width: 160px">{{:_CHOOSE_PACKAGE:}}</p>
+	<p style="width: 120px; height: 60px">
+		<span id="package">{{:math:}} {{:_MATH:}}</span>
+		<span>{{:literacy:}} {{:_LITERACY:}}</span>
+	</p>
+</div>
+
+<table class="statistic_table userLoginPane_default " cellpadding="5">
+ <tr>
+	<th style="width: 100px"></th>
+	<th style="width: 200px; text-align: left">{{:_NAME:}}, {{:_SURNAME:}}</th>
+	<th style="width: 100px">{{:_STATUS:}}</th>
+	<th style="width: 100px">{{:_PACKAGE:}}</th>
+ </tr>
+[:children:]
+ <tr>
+	<td class="{{:child_status:}}"><div class="user_image" style="background-image: url('{{:child_image:}}')"></div></td>
+	<td class="{{:child_status:}}">{{:name:}} {{:surname:}}</td>
+	<td class="{{:child_status:}}" style="text-align: center; color: {{:paid_color:}}">{{:paid:}}</td>
+	<td class="{{:child_status:}}" style="text-align: center">{{:package:}}</td>
+ </tr>
+[:children:]
+</table>
+
+<div class="registration_button" style="clear: both; margin-bottom: 20px;">
+	<input type="hidden" name="change_package" id="change_package" value="0">
+	<input class="button" type="submit" id="submit" value="{{:_SAVE:}}" />
+</div>
+</form>
+
+<script type="text/javascript">
+//**** calculate price
+calculate_price();
+
+function calculate_price(){
+	$.get('clear_post.php?module={{:module:}}&page=change_package&action=calculate_price', 
+				{
+					period: obj_value('period'),
+					math: obj_value('math'), 
+					literacy: obj_value('literacy')
+				})
+	.done(function(data){
+		$("#payment_price").html(data)
+	})
+}
+$("#period").change(function(){
+	calculate_price();
+})
+$(".Checkout_main").find(':checkbox').click(function(){
+	if(parseInt(obj_value('math')) !== 1 && parseInt(obj_value('literacy')) !== 1){
+		alert('{{:_CHOOSE_PACKAGE:}}!');
+		return false;
+	}
+	calculate_price();
+})
+//*****************
+
+//**** submit form
+$("#change_package_form").submit(function(){
+	$("#submit").attr('disabled', true);
+	post_call('change_package', this);
+});
+</script>
+[:content:]

@@ -1,0 +1,120 @@
+[:default:]
+<div id="statistic_content">
+[:default:]
+
+<table class="statistic_table" cellpadding="5" style="width: 100%;">
+	<tbody>
+		<tr>
+			<th rowspan="2" style="text-align: center; width: 100px">{{:_DATE:}}</th>
+			<th rowspan="2" style="text-align: center; width: 100px">{{:_TEXTS_AMOUNT:}}</th>
+			<th colspan="3" rowspan="1" style="text-align: center; width: 300px">{{:_TESTS_AMOUNT:}}</th>
+			<th rowspan="2" style="text-align: center; width: 100px">{{:_SPENT_TIME:}}</th>
+			<th rowspan="2" style="text-align: center; width: 100px">{{:_ONE_AVARAGE_TEST_SPENT_TIME:}}</th>
+		</tr>
+		<tr>
+			<th style="text-align: center; width: 100px">{{:_TOTAL:}}</th>
+			<th style="text-align: center; width: 100px">{{:_TRUE_ANSWERS:}}</th>
+			<th style="text-align: center; width: 100px">{{:_WORNG_ANSWERS:}}</th>
+		</tr>
+		[:list_by_date:]
+		<tr>
+			<td style="text-align: center;">{{:date:}}</td>
+			<td style="text-align: center;">{{:texts_amount:}}</td>
+			<td style="text-align: center;">{{:tests_amount:}}</td>
+			<td style="text-align: center;">{{:true_answers:}}</td>
+			<td style="text-align: center;">{{:wrong_answers:}}</td>
+			<td style="text-align: center;">{{:spent_time_hour:}}{{:_HR:}} {{:spent_time_minute:}}{{:_MNT:}}</td>
+			<td style="text-align: center;">{{:avarage_test_spent_time_minute:}}{{:_MNT:}} {{:avarage_test_spent_time_second:}}{{:_SC:}}</td>
+		</tr>
+		[:list_by_date:]
+	</tbody>
+</table>
+
+<div class="chart">
+	<div class="chart_title">{{:_CHART_TITLE:}}</div>
+	<div class="chart_left_label">{{:_LEFT_LABEL:}}</div>
+	<div class="chart_chart"><canvas id="canvas" height="250" width="860"></canvas></div>
+	<div class="chart_bottom_label">{{:_BOTTOM_LABEL:}}</div>
+</div>
+
+<div class="chart">
+	<div class="chart_title" style="color: #48D05B">{{:_CHART_TITLE_TEXTS:}}</div>
+	<div class="chart_left_label">{{:_LEFT_LABEL_TEXTS:}}</div>
+	<div class="chart_chart"><canvas id="canvas2" height="250" width="840"></canvas></div>
+	<div class="chart_bottom_label">{{:_BOTTOM_LABEL:}}</div>
+</div>
+
+<div class="chart">
+	<div class="chart_title">{{:_TIME_TABLE_BY_SKILLS:}}</div>
+	<table class="statistic_table" cellpadding="5" style="width: 100%;">
+		<tbody>
+			<tr>
+				<th rowspan="2" style="width: 270px">{{:_TEXT:}}</th>
+				<th colspan="3" rowspan="1" style="text-align: center;; width: 200px">{{:_TESTS_AMOUNT:}}</th>
+				<th rowspan="2" style="text-align: center; width: 70px">{{:_SPENT_TIME:}}</th>
+				<th rowspan="2" style="text-align: center; width: 70px">{{:_ONE_AVARAGE_TEST_SPENT_TIME:}}</th>
+				<th rowspan="2" style="text-align: center; width: 70px">{{:_TOTAL_POINT:}}</th>
+			</tr>
+			<tr>
+				<th style="text-align: center; width: 80px">{{:_TOTAL:}}</th>
+				<th style="text-align: center; width: 80px">{{:_TRUE_ANSWERS:}}</th>
+				<th style="text-align: center; width: 80px">{{:_WORNG_ANSWERS:}}</th>
+			</tr>
+			[:list_by_skill:]
+			<tr>
+				<td style="text-align: left;">{{:text:}}</td>
+				<td style="text-align: center;">{{:tests_amount:}}</td>
+				<td style="text-align: center;">{{:true_answers:}}</td>
+				<td style="text-align: center;">{{:wrong_answers:}}</td>
+				<td style="text-align: center;">{{:spent_time_hour:}}{{:_HR:}} {{:spent_time_minute:}}{{:_MNT:}}</td>
+				<td style="text-align: center;">{{:avarage_test_spent_time_minute:}}{{:_MNT:}} {{:avarage_test_spent_time_second:}}{{:_SC:}}</td>
+				<td style="text-align: center; color: {{:progress_color:}}">{{:smart_point:}}</td>
+			</tr>
+			[:list_by_skill:]
+		</tbody>
+	</table>
+</div>
+
+<script type="text/javascript">
+var barChartData = {
+		labels : [{{:labels:}}],
+		datasets : [
+			{
+				label: "test",
+				fillColor : "rgba(44,165,222,0.5)",
+				strokeColor : "rgba(44,165,222,0.8)",
+				highlightFill: "rgba(44,165,222,0.75)",
+				highlightStroke: "rgba(44,165,222,1)",
+				data : [{{:chart_data:}}]
+			}
+		]
+
+	}
+
+var ctx = document.getElementById("canvas").getContext("2d");
+var myBar = new Chart(ctx).Bar(barChartData);	
+
+//**** texts chart
+var barChartData_skills = {
+		labels : [{{:labels:}}],
+		datasets : [
+			{
+				label: "skills",
+				fillColor : "rgba(72,208,91,0.5)",
+				strokeColor : "rgba(72,208,91,0.8)",
+				highlightFill: "rgba(72,208,91,0.75)",
+				highlightStroke: "rgba(72,208,91,1)",
+				data : [{{:chart_texts_data:}}]
+			}
+		]
+
+	}
+
+var ctx_skills = document.getElementById("canvas2").getContext("2d");
+var myBar_skills = new Chart(ctx_skills).Bar(barChartData_skills);
+
+</script>
+
+[:default:]
+</div>
+[:default:]

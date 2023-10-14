@@ -1,0 +1,87 @@
+[:search:]
+<link rel="stylesheet" href="style/jquery-ui.css"> 
+<div id="check"></div>
+<div class="statistic_search awards_search">
+	<div class="date">
+    	<div class="statistic_search_calendar">
+    		<div>{{:date_from:}}</div>
+    		<div>{{:date_to:}}</div>
+    	</div>
+	    <div class="style_select" style="float: right; margin-right: 0">{{:date_types:}}</div>	    
+    </div>
+    <div class="row">
+		<div>{{:_CHILD:}} <div class="style_select">{{:children:}}</div></div>
+		<div>{{:_GRADE:}} <div class="style_select">{{:grades:}}</div></div>
+		<div>{{:_SUBJECT:}} <div class="style_select">{{:subject:}}</div></div>
+		<input type="submit" name="update" id="awards_search_button" value="{{:_UPDATE:}}">
+	</div>
+</div>
+<div id="awards_content">
+[:search:]
+
+<div class="child_awards">
+	[:awards:]
+	<div class="award_list popup" href="body.php?module={{:module:}}&page=award_details&child_award_id={{:id:}}&child_id={{:child_id:}}&type=popup&custom_style=award_popup">
+		<div class="award_image">{{:math_literacy:}}</div>
+		<div class="award_skill">{{:grade_number:}}-{{:skill_number:}} {{:award_name:}}</div>
+	</div>
+	[:awards:]
+</div>
+
+[:search:]
+</div>
+
+
+<script type="text/javascript">
+$(function() {
+	$( ".calendar" ).datepicker({
+		  monthNames: [ "{{:_JANUARY:}}", "{{:_FABRUARY:}}", "{{:_MARCH:}}", "{{:_APRIL:}}", "{{:_MAY:}}", "{{:_JUNE:}}", "{{:_JULY:}}", "{{:_AUGUST:}}", "{{:_SEPTEMBER:}}", "{{:_OCTOMBER:}}", "{{:_NOVEMBER:}}", "{{:_DECEMBER:}}" ],
+		  dayNamesMin: [ "{{:_W_OR:}}", "{{:_W_SAM:}}", "{{:_W_OTX:}}", "{{:_W_XUT:}}", "{{:_W_PAR:}}", "{{:_W_SHAB:}}", "{{:_W_KV:}}" ],
+		  firstDay: 1,
+		  dateFormat: "yy-mm-dd"
+		});
+    $( ".calendar" ).datepicker();
+  });
+  
+//**** change date_types
+function date_fromat(date){
+	yyyy = date.getFullYear();
+	mm = ('0' + (date.getMonth() + 1)).slice(-2);
+	dd = ('0' + date.getDate()).slice(-2);
+	
+	return yyyy + '-' + mm + '-' + dd;
+}
+$("#date_types").change(function(){
+	var now = new Date();
+	var d = new Date();
+	
+	switch(this.value){
+	case "1":
+		d.setDate(now.getDate() - 7);
+		break;
+	case "2":
+		d.setMonth(now.getMonth() - 1);
+		break;
+	case "3":
+		d.setMonth(now.getMonth() - 3);
+		break;
+	case "4":
+		d.setMonth(now.getMonth() - 6);
+		break;
+	case "5":
+		d.setMonth(now.getMonth() - 12);
+		break;
+	}
+	
+	$("#date_from").val(date_fromat(d));
+	$("#date_to").val(date_fromat(now));
+})
+  
+$("#awards_search_button").click(function(){
+	$.post('body.php?module={{:module:}}&page=awards', {search: 1, date_from: obj_value('date_from'), date_to: obj_value('date_to'), child_id: obj_value('child_id'), grade_id: obj_value('grade'), subject: obj_value('subject')})
+	.done(function(data){
+		$("#awards_content").html(data);
+	})
+})
+</script>
+[:search:]

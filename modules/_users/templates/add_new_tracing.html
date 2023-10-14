@@ -1,0 +1,40 @@
+<div style="margin-top: 20px; font-size: 20px; text-align: left">
+	{{:add_new_tracing_title:}}
+	<div class="error" id="check"></div>
+</div>
+
+<table class="new_tracing" cellspacing=1>
+  <tr>
+    <td style="width: 200px" class="new_tracing_head div_pad">{{:tracing_title:}}</td>
+    <td style="width: 130px" class="new_tracing_head div_pad">{{:price_title:}}</td>
+    <td style="width: 130px" class="new_tracing_head div_pad">{{:website_title:}}</td>
+    <td style="width: 235px" class="new_tracing_head div_pad">{{:description_title:}}</td>
+    <td style="width: 80px" class="new_tracing_head div_pad">{{:gadafutva_title:}}</td>
+    <td style="width: 80px" class="new_tracing_head div_pad"></td>
+  </tr>
+    <tr>
+    <td class="new_tracing_td div_pad">{{:tracing_input:}}</td>
+    <td class="new_tracing_td div_pad">{{:price_input:}} <span style="font-size: 18px">USD</span></td>
+    <td class="new_tracing_td div_pad">{{:website_input:}}</td>
+    <td class="new_tracing_td div_pad">{{:description_input:}}</td>
+    <td class="new_tracing_td div_pad" valign="top">
+    	<div  style="position: relative">
+    	<div id="gadafutva_info" style="top: 30px; left: 3px; font-size: 9px; visibility: hidden; background: #fff; border: 1px solid #cccccc; position: absolute; width: 200px">
+    		<div style="text-align: left; padding: 5px;">{{:_GADAFUTVA_INFO:}}</div>
+    	</div>
+    	<div style="float: left; padding: 5px 0px 0px 20px">
+    		{{:gadafutva_input:}}
+    	</div> 
+    	<div style="float: left; padding: 9px 0px 0px 5px">
+    		<img src="images/info.png" border="0" onmouseover="show_block('gadafutva_info')" onmouseout="hide_block('gadafutva_info')">
+    	</div>
+    	</div>
+    </td>
+    <td class="new_tracing_td div_pad">
+    	<div style="float: left; padding-left: 10px">
+			<input type="hidden" name="add_tracing" id="add_tracing" value="1">
+			<img src="images/add_{{:lang:}}.jpg" border=0 style="cursor: pointer" onclick="{{:add_tracing_action:}}">
+		</div>
+    </td>
+  </tr>
+</table>

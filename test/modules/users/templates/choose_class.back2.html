@@ -1,0 +1,330 @@
+<style>
+	.math_subject {
+		border-right: 1px solid #e9e9e9
+	}
+</style>
+<h4 style="display: none">{{:_CHOOSE_DIRECTION:}}</h4>
+<div class="registration">
+	<div id="choose_direction" style="display: none">
+		<div class="styled_checkbox">
+			{{:direction_1:}}<label for="direction"></label>
+			<label for="direction_1">{{:_MATH_LITERACY:}}</label>
+		</div>
+		<div class="styled_checkbox">
+			{{:direction_2:}}<label for="direction"></label>
+			<label for="direction_2">{{:_GENERAL_SKILLS:}}</label>
+		</div>
+	</div>
+	<div style="clear: both"></div>
+	<h4 id="choose_group_title">{{:_CHOOSE_GROUP:}}</h4>
+
+	[:subject_body:]
+	<div class="registration_in subjects {{:subject:}}_subject" style="overflow: hidden; width: 435px; position: relative">
+		<div class="package">
+			<label for="{{:subject:}}_check"><span class="subject">{{:subject_name:}}</span></label>
+			<span class="styled_checkbox">{{:subject_checkbox:}}<label for="{{:subject:}}_check"></label></span>
+		</div>
+
+		<div>
+			<div id="{{:subject:}}_body" id="test"
+			     style="position: absolute; width: 500px; height: 500px; background: #fff; z-index: 999; opacity: 0.7"></div>
+			<div class="registration_in_title"><p>{{:_CHOOSE_CLASS:}} ({{:_CLASS:}}){{:star:}}</p></div>
+			{{:grade_input:}}
+			<div class="registration_in_value {{:subject:}}_grade_main" style="font-size: 0">
+				<div class="choose_button" data-type="grade" data-subject="{{:subject:}}" id="0">0</div>
+				<div class="choose_button" data-type="grade" data-subject="{{:subject:}}" id="1">I</div>
+				<div class="choose_button" data-type="grade" data-subject="{{:subject:}}" id="2">II</div>
+				<div class="choose_button" data-type="grade" data-subject="{{:subject:}}" id="3">III</div>
+				<div class="choose_button" data-type="grade" data-subject="{{:subject:}}" id="4">IV</div>
+				<div class="choose_button" data-type="grade" data-subject="{{:subject:}}" id="5">V</div>
+			</div>
+
+			<div style="clear: both; padding-top: 30px"></div>
+
+			<div class="registration_in_title"><p>{{:_CHOOSE_SCHEDULE:}}{{:star:}}</p></div>
+			{{:dayes_input:}}
+			<div class="registration_in_value {{:subject:}}_dayes_main" style="font-size: 0">
+				{{:dayes:}}
+				[:dayes:]
+				<div class="choose_button choose_button_disabled" data-type="dayes" data-subject="{{:subject:}}"
+				     style="padding: 0 10px" id="{{:dayes_id:}}">
+					<div style="line-height: normal; width: 80px; padding-top: 5px">{{:dayes:}}</div>
+				</div>
+				[:dayes:]
+			</div>
+
+			<div style="clear: both; padding-top: 30px"></div>
+			<div id="{{:subject:}}_hours_block" style="display: {{:show_hours:}}">
+				<div class="registration_in_title"><p>{{:_CHOOSE_TIME:}}{{:star:}}</p></div>
+				{{:hours_input:}}
+				<div class="registration_in_value {{:subject:}}_hours_main" id="{{:subject:}}_hours_list"
+				     style="font-size: 0; padding-bottom: 30px">
+					[:hours:]
+					<div class="choose_button {{:active_hour:}}" data-type="hours" data-subject="{{:subject:}}"
+					     style="padding: 0 20px" id="{{:hours_id:}}">
+						{{:hours:}}
+					</div>
+					[:hours:]
+				</div>
+			</div>
+			<div id="class_full_{{:subject:}}" class="class_full">
+				ეს ჯგუფი შევსებულია. გთხოვთ აირჩიოთ სხვა განრიგი, ან დაგვიკავშირდით
+				<span class="marked_text">2200229</span>
+			</div>
+
+		</div>
+	</div>
+	[:subject_body:]
+	<div class="registration_in subjects gskills_subject" style="overflow: hidden; width: 700px; position: relative">
+		<div class="package">{{:gskills_checkbox:}}</div>
+		<input type="hidden" id="gskills_dayes" name="gskills_dayes" value="9">
+		<input type="hidden" id="gskills_grade" name="gskills_grade" value="13">
+		<div>
+			<ul>
+				<li><span class="marked_text">კვირაში 2 სესია</span> (ორშაბათი, ხუთშაბათი).</li>
+				<li>ჯგუფებში მიღება ხდება <span class="marked_text">ტესტირების საფუძველზე</span>.</li>
+				<li>თვის საფასური (8 სესია) - <span class="marked_text">245</span> ლარი.</li>
+				<li>სრული კურსის საფასური (40 სესია) - <span class="marked_text">995</span> ლარი.</li>
+			</ul>
+		</div>
+	</div>
+
+	{{:subject_body:}}
+	<div style=" clear: both"></div>
+
+	<!--<div class="registration_in pre_registration">{{:_PRE_REGISTRATION_DEAL:}}</div>-->
+	<div style=" clear: both"></div>
+	<input type="hidden" name="show_payment" id="show_payment" value="0">
+	<div id="payment_block">
+		<div class="registration_in" style="overflow: hidden; width: 435px; position: relative; border-top: 1px solid #e9e9e9">
+			<div class="registration_in_title"><p>{{:_CHOOSE_PERIOD:}}{{:star:}}</p></div>
+			{{:payment_period_input:}}
+			<div class="registration_in_value choose_price" style="font-size: 0" class="payment_period">
+				<div class="choose_button" data-type="payment_period" data-subject="" id="1m">1 {{:_MONTH:}}</div>
+				<div class="choose_button" data-type="payment_period" data-subject="" id="3m">3 {{:_MONTH:}}</div>
+				<div class="choose_button" data-type="payment_period" data-subject="" id="9m">{{:_FULL_PROGRAM:}}</div>
+			</div>
+
+			<div style="clear: both; padding-top: 30px"></div>
+			<div class="registration_in_title" style="border-top: 1px solid #e9e9e9">
+				<div style="float: left">{{:_PRICE:}}:</div>
+				<div style="float: right" id="payment_price"></div>
+			</div>
+		</div>
+		<div class="registration_in" style="overflow: hidden; width: 435px; position: relative; border-top: 1px solid #e9e9e9">
+			<div class="registration_in_title"><p>{{:_CHOOSED_MONTHES:}}</p></div>
+			<div class="registration_in_value">
+				<div style="float: left; margin-right: 30px; width: 155px;">{{:choosed_monthes_1:}}</div>
+				<div style="float: left; margin-right: 30px; width: 155px;">{{:choosed_monthes_2:}}</div>
+				[:choosed_monthes:]
+				<div class="choosed_monthes" id="month_{{:month_n:}}">
+					<span></span>{{:month:}}<p class="month_day" id="month_day_{{:month_n:}}"></p>
+				</div>
+				[:choosed_monthes:]
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	//**** choose direction
+	function choose_direction(n){
+		$("#choose_group_title").css("display", "block");
+		if(n == 1){// math, literacy
+			$(".math_subject, .literacy_subject").css("display", "block");
+			$("#3m").css("display", "inline-block");
+			$(".gskills_subject").css("display", "none");
+			$("#payment_block").css("display", "block");
+			$("#choose_group_title").html('{{:_CHOOSE_GROUP:}}');
+		}
+		else if(n == 2){// general skills
+			$(".math_subject, .literacy_subject").css("display", "none");
+			$("#3m").css("display", "none");
+			$(".gskills_subject").css("display", "block");
+			$("#payment_block").css("display", $("#show_payment").val() !== "1" ? "none" : "block");
+			$("#choose_group_title").html('{{:_GENERAL_SKILLS:}}');
+		}
+	}
+	$("#choose_direction input[type=radio]").change(function(){
+		choose_direction(parseInt($(this).val()));
+		calculate_price();
+	})
+	$("#choose_direction input[type=radio][value='1']").attr('checked', 'checked');
+	choose_direction(1);
+
+	//*** disable grade
+	$(".literacy_grade_main").children("#0").removeClass("choose_button");
+	$(".literacy_grade_main").children("#0").addClass("choose_button_disabled");
+
+	$(".literacy_dayes_main").children("#1, #2").removeClass("choose_button");
+	$(".literacy_dayes_main").children("#1, #2").addClass("choose_button_disabled");
+
+	//***** enable subject
+	function enable_subject(subject) {
+		var display = parseInt(obj_value(subject + '_check')) == 1 ? "none" : "block";
+		$("#" + subject + "_body").css("display", display);
+
+		calculate_price();
+	}
+
+	enable_subject('math');
+	enable_subject('literacy');
+	enable_subject('gskills');
+
+	$(".package").on("click", "#math_check, #literacy_check", function () {
+		enable_subject($(this).data('subject'))
+	});
+	//**** calculate price
+	function calculate_price() {
+		var subjects = Array('math', 'literacy', 'gskills');
+
+		for (i = 0; i < 2; i++) {
+			if (obj_value(subjects[i] + '_check') == 1) {
+				if ($("#" + subjects[i] + "_grade").val() == '') {
+					$("#payment_price").html('{{:_CHOOSE_CLASS:}}');
+					return;
+				}
+				else if ($("#" + subjects[i] + "_dayes").val() == '') {
+					$("#payment_price").html('{{:_CHOOSE_SCHEDULE:}}');
+					return;
+				}
+				else if ($("#" + subjects[i] + "_hours").val() == '') {
+					$("#payment_price").html('{{:_CHOOSE_TIME:}}');
+					return;
+				}
+				else if ($("#_payment_period").val() == '') {
+					$("#payment_price").html('{{:_CHOOSE_PERIOD:}}');
+					//return;
+				}
+			}
+		}
+
+		$.get('clear_post.php?module={{:module:}}&page=choose_class&action=calculate_price',
+				{
+					period: obj_value('_payment_period'),
+					child_id: '{{:child_id:}}',
+					math: $("#direction_1").is(":checked") ? obj_value('math_check') : 0,
+					literacy: $("#direction_1").is(":checked") ? obj_value('literacy_check') : 0,
+					math_grade: obj_value('math_grade'),
+					math_dayes_id: obj_value('math_dayes'),
+					math_hours_id: obj_value('math_hours'),
+					literacy_grade: obj_value('literacy_grade'),
+					literacy_dayes_id: obj_value('literacy_dayes'),
+					literacy_hours_id: obj_value('literacy_hours'),
+					gskills: $("#direction_2").is(":checked") ? 1 : 0,
+					gskills_dayes_id: obj_value('gskills_dayes'),
+				})
+				.done(function (data) {
+					info = jQuery.parseJSON(data);
+
+					$(".class_full").css('display', 'none');
+					if (info.message == 'class_full') {
+						for (i = 0; i < info.subjects.length; i++) {
+							$("#class_full_" + info.subjects[i]).css('display', 'block');
+						}
+					}
+					else {
+						$("#class_full").css('display', 'none');
+						$("#payment_price").html(info.message)
+					}
+
+					if ($("#_payment_period").val() !== '') {
+						select_monthes();
+					}
+				})
+
+	}
+
+	//**** select monthes
+	function select_monthes() {
+		$.get('clear_post.php?module={{:module:}}&page=choose_class&action=monthes',
+				{
+					grade: obj_value('grade'),
+					math_dayes_id: obj_value('math_dayes'),
+					literacy_dayes_id: obj_value('literacy_dayes'),
+					gskills_dayes_id: obj_value('gskills_dayes'),
+					payment_period: obj_value('_payment_period')
+				})
+				.done(function (data) {
+					info = jQuery.parseJSON(data);
+
+					//** select monthes
+					if ($("#payment_period").val() !== '') {
+						$(".month_day").html('');
+						$("#month_day_" + info.schedule_first_day['month']).html('(' + info.schedule_first_day['day'] + ')');
+						$("#month_day_" + info.schedule_last_day['month']).html('(' + info.schedule_last_day['day'] + ')');
+						for (i = 1; i <= 12; i++) {
+							if (info.schedule_monthes[i] == 1) {
+								$("#month_" + i).addClass("choosed_monthes_active");
+							}
+							else {
+								$("#month_" + i).removeClass("choosed_monthes_active");
+							}
+						}
+					}
+				})
+	}
+
+	//**** choose group
+	function choose_group(field_id, field_value, subject) {
+		//$("."+field_id).children(".choose_button").removeClass('choose_button_active');
+		if (field_value !== '') {
+			$("." + subject + '_' + field_id + '_main').children("#" + field_value).addClass('choose_button_active');
+			//**** show hours
+			if (field_id == "dayes") {
+				show_hours(subject);
+			}
+		}
+
+//	calculate_price();
+	}
+
+	//**** show hours
+	function show_hours(subject) {
+		loading_big_icon(subject + "_hours_list");
+		$("#" + subject + "_hours_block").css("display", "block");
+		$.get('clear_post.php?module={{:module:}}&page=choose_class&action=generate_hours',
+				{
+					grade: $("#" + subject + "_grade").val(),
+					dayes_id: $("#" + subject + "_dayes").val(),
+					subject: subject,
+					edit_value: $("#" + subject + "_hours").val()
+				})
+				.done(function (data) {
+					info = jQuery.parseJSON(data);
+					$("#" + info.subject + "_hours_list").html(info.source);
+
+					// enable days
+					$("." + subject + "_dayes_main>div").removeClass("choose_button_disabled");
+					$("." + subject + "_dayes_main>div").each(function () {
+						if ($.inArray(this.id, info.days) !== -1) {
+							$(this).removeClass("choose_button_disabled");
+							$(this).addClass("choose_button");
+						}
+						else {
+							$(this).addClass("choose_button_disabled");
+							$(this).removeClass("choose_button_active");
+							$(this).removeClass("choose_button");
+						}
+					})
+
+				})
+
+	}
+
+	//**** choose button
+	$(".registration").on("click", ".choose_button", function () {
+		$(this).parent(".registration_in_value").children(".choose_button").removeClass("choose_button_active");
+		$(this).addClass("choose_button_active");
+
+		$("#" + $(this).data('subject') + "_" + $(this).data('type')).val(this.id);
+
+		calculate_price();
+
+		//**** show hours
+		if ($(this).data('type') !== "hours" && $(this).data('type') !== "payment_period" && $("#" + $(this).data('subject') + "_grade").val() !== "") {
+			show_hours($(this).data('subject'));
+		}
+	})
+	//*****************
+</script>

@@ -1,0 +1,112 @@
+<h4 id="choose_group_title">{{:_CHOOSE_GROUP:}}</h4>
+<div class="registration_in {{:subject:}}_subject"
+     style="overflow: hidden; width: 870px; border-right: none; position: relative">
+    <div class="package">
+        <!--<label for="{{:subject:}}_check"><span class="subject">{{:subject_name:}}</span></label>-->
+        <span class="styled_checkbox">{{:subject_checkbox:}}</span>
+    </div>
+
+    <div>
+        <div class="registration_in_title"><p>{{:_CHOOSE_CLASS:}}{{:star:}}</p></div>
+        {{:grade_input:}}
+        <div class="registration_in_value {{:subject:}}_grade_main" style="font-size: 0">
+            <!--<div class="choose_button" data-type="grade" data-subject="{{:subject:}}" id="-1">0<sup>4</sup></div>-->
+            <div class="choose_button" data-type="grade" data-subject="{{:subject:}}" id="0">0</div>
+            <div class="choose_button" data-type="grade" data-subject="{{:subject:}}" id="1">
+                <span class="grade">I</span>
+            </div>
+            <div class="choose_button" data-type="grade" data-subject="{{:subject:}}" id="2">
+                <span class="grade">II</span>
+            </div>
+            <div class="choose_button" data-type="grade" data-subject="{{:subject:}}" id="3">
+                <span class="grade">III</span>
+            </div>
+            <div class="choose_button" data-type="grade" data-subject="{{:subject:}}" id="4">
+                <span class="grade">IV</span>
+            </div>
+            <div class="choose_button" data-type="grade" data-subject="{{:subject:}}" id="5">
+                <span class="grade">V</span>
+            </div>
+            <div class="choose_button" data-type="grade" data-subject="{{:subject:}}" id="6">
+                <span class="grade">VI</span>
+            </div>
+            <div class="choose_button" data-type="grade" data-subject="{{:subject:}}" id="7">
+                <span class="grade">VII</span>
+            </div>
+        </div>
+
+        <div style="clear: both; padding-top: 30px"></div>
+
+        <div class="registration_in_title">
+            <p>
+                {{:_LESSON_DAYES:}}
+                <span class="marked_text">(სესიის ხანგრძლივობა 2.5 საათი)
+					</span>
+            </p>
+        </div>
+        {{:dayes_input:}}
+        <div class="registration_in_value {{:subject:}}_dayes_main" style="font-size: 0">
+            [:dayes:]
+            <div class="choose_button " data-type="dayes" data-subject="{{:subject:}}"
+                 style="padding: 0 10px; margin-right: 10px; height: 60px; line-height: 60px" id="{{:dayes_id:}}">
+                <div style="line-height: normal; width: 140px; padding-top: 5px; font-size: 17px; line-height: 26px">
+                    {{:dayes:}}
+                    <div style="font-style: italic; font-size: 14px; margin-top: 2px"></div>
+                </div>
+            </div>
+            [:dayes:]
+        </div>
+
+        <div style="clear: both"></div>
+
+        {{:hours_input:}}
+        <div style="clear: both; padding-top: 30px"></div>
+        <div id="{{:subject:}}_hours_block" style="display: {{:show_hours:}}">
+            <div class="registration_in_title"><p>{{:_CHOOSE_TIME:}}{{:star:}}</p></div>
+            <div class="registration_in_value {{:subject:}}_hours_main" id="{{:subject:}}_hours_list"
+                 style="font-size: 0; padding-bottom: 30px">
+                [:hours:]
+                <div class="choose_button {{:active_hour:}}" data-type="hours" data-subject="{{:subject:}}"
+                     style="padding: 0 20px" id="{{:hours_id:}}">
+                    {{:hours:}}
+                </div>
+                [:hours:]
+            </div>
+        </div>
+        <div id="class_full_{{:subject:}}" class="class_full">
+            ეს ჯგუფი შევსებულია. გთხოვთ აირჩიოთ სხვა განრიგი, ან დაგვიკავშირდით
+            <span class="marked_text">2200229</span>
+        </div>
+
+    </div>
+</div>
+
+<div style="clear: both"></div>
+
+<div class="payment_block">
+    <div class="registration_in"
+         style="overflow: hidden; width: 435px; margin-top: 30px; position: relative; border-top: 1px solid #e9e9e9">
+        <div class="registration_in_title"><p>{{:_CHOOSE_PERIOD:}}{{:star:}}</p></div>
+        {{:payment_period_input:}}
+        <div class="registration_in_value choose_price" style="font-size: 0" class="payment_period">
+            <div class="choose_button" data-type="_payment_period" data-subject="" id="1m">1 {{:_MONTH:}}</div>
+            <div class="choose_button" data-type="_payment_period" data-subject="" id="3m">3 {{:_MONTH:}}</div>
+            <div class="choose_button" data-type="_payment_period" data-subject="" id="9m">{{:_FULL_PROGRAM:}}</div>
+        </div>
+
+        <div style="clear: both; padding-top: 30px"></div>
+        <div class="registration_in_title" style="border-top: 1px solid #e9e9e9">
+            <div style="float: left">{{:_PRICE:}}:</div>
+            <div style="float: right" id="payment_price"></div>
+        </div>
+        <div class="clearfix"></div>
+        [:special_price:]
+        <div class="marked_text" style="margin-top: 10px; display: none" id="special_price">{{:_SPECIAL_PRICE:}}</div>
+        [:special_price:]
+    </div>
+    <div class="registration_in"
+         style="overflow: hidden; width: 435px; margin-top: 30px; position: relative; border-top: 1px solid #e9e9e9">
+        <div class="registration_in_title"><p>{{:_LESSONS_PERIOD:}}</p></div>
+        <div class="registration_in_value" style="font-size: 20px; height: 50px" id="lessons_period"></div>
+    </div>
+</div>

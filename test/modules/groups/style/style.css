@@ -1,0 +1,13 @@
+.user_table{
+        font-size: 11px;
+}
+.reg_table_title{
+        background: #1D3E5F;
+        color: #FFF;
+        font-size: 12px;
+        font-weight: bold;
+}
+.reg_table_td{
+        background: #D1E1EF;
+        font-size: 12px;
+}

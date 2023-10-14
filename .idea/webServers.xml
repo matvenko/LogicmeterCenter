@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="eb0ddf5d-66fe-4694-b856-ad26e15d97f5" name="logicMeter" url="http://logicmeter.eastus.cloudapp.azure.com">
+        <fileTransfer rootFolder="/home/logicmeter/www" accessType="SFTP" host="logicmeter.eastus.cloudapp.azure.com" port="22" sshConfigId="19698e55-9e03-4afa-8745-523308db5ae6" sshConfig="root@logicmeter.eastus.cloudapp.azure.com:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,104 @@
+.text_main{
+	position: relative;
+	padding: 20px;
+}
+
+.letter_title {
+	width: 350px;
+	height: 200px;
+	float: left;
+	margin-left: 30px;
+	margin-top: 30px;
+}
+.letter_title p {
+	margin-left:5px;
+	width: 300px;
+	height: 25px;
+	float: left;
+	font-size: 14px;
+	margin-top: 10px;
+	margin-bottom: 2px;
+}
+.letter_title input[type="text"] {
+	text-indent:5px;
+	width: 330px;
+	height: 30px;
+	border-radius: 5px;
+	border: 1px solid #2CA5DE;
+}
+
+.letter_text {
+	width: 500px;
+	height: 250px;
+	float: right;
+	margin-right: 20px;
+	margin-top: 30px;
+}
+.letter_text p {
+	margin-left:5px;
+	width: 300px;
+	height: 20px;
+	float: left;
+	font-size: 14px;
+	margin-top: 10px;
+	margin-bottom: 2px;
+}
+
+.letter_text textarea{
+	width: 510px;
+	height: 105px;
+	font-size:14px;
+	border-radius: 5px;
+	border: 1px solid #2CA5DE;
+}
+.send {
+	width: 110px;
+	height: 30px;
+	border-radius: 3px;
+	border: 1px solid #2CA5DE;
+	background-color: #2ca5de;
+	color: #fff;
+	font-size: 15px;
+	margin-top: 10px;
+}
+
+.send:disabled{
+	opacity: 0.4;
+}
+
+
+.contact_information {
+	width: 270px;
+	height: 250px;
+	float: left;
+	margin-left:20px;
+	font-size: 16px;
+	color: #5c5c5c;
+}
+.contact_information p {
+	line-height: 28px;
+}	
+.dropdown{
+	cursor: pointer; 
+	display: block;
+	margin: 0 0 20px 20px; 
+	padding: 0 20px 0 20px; 
+	line-height:30px; 
+	color:#FFFFFF; 
+	font-size:16px; 
+	text-align:left; 
+	font-family: web_caps; 
+	font-weight: normal; 
+	background: #2ca5de url('images/dropdown.png') bottom right no-repeat;
+}
+.dropdown_box{
+	display: none;
+	padding: 0 20px 0 10px;
+	margin: 0 0 20px 30px;
+	color: #4b4b4b;
+	text-align: justify;
+	border-left: 1px solid #2ca5de;
+	font-size: 16px; 
+	font-family: dejavu; 
+	line-height: 22px;
+}

@@ -1,0 +1,224 @@
+<h4>{{:_CHOOSE_GROUP:}}</h4>
+<div class="registration">
+	<div class="registration_in" style="width: 450px; border-right: 1px solid #e9e9e9">
+		<div class="registration_in_title"><p>{{:_CHOOSE_CLASS:}}{{:star:}}</p></div>
+		{{:grade_input:}}
+		<div class="registration_in_value">
+			<!-- <div class="choose_class" id="0">0 {{:_CLASS:}}</div> -->
+			<div class="choose_class" id="0">0</div>
+			<div class="choose_class" id="1">I</div>
+			<div class="choose_class" id="2">II</div>
+			<div class="choose_class" id="3">III</div>
+			<div class="choose_class" id="4">IV</div>
+		</div>
+	
+		<div style="clear: both; padding-top: 30px"></div>
+	
+		<div class="registration_in_title"><p>{{:_CHOOSE_SCHEDULE:}}{{:star:}}</p></div>
+		{{:schedule_input:}}
+		<div class="registration_in_value">
+			<table class="lesson_schedule">
+				<tr>
+					<td></td>
+					<td>{{:dayes_1:}}</td>
+					<td>{{:dayes_2:}}</td>
+					<td>{{:dayes_3:}}</td>
+				</tr>
+				[:hours:]
+				<tr>
+					<td>{{:time:}}</td>
+					<td><div class="choose_schedule" id="{{:dayes_id_1:}}-{{:hour_id:}}"></div></td>
+					<td><div class="choose_schedule" id="{{:dayes_id_2:}}-{{:hour_id:}}"></div></td>
+					<td><div class="choose_schedule" id="{{:dayes_id_3:}}-{{:hour_id:}}"></div></td>
+				</tr>
+				[:hours:]
+			</table>
+		</div>
+		
+		<div style="clear: both; padding-top: 30px"></div>
+		
+<!-- 		<div class="registration_in_title"><p>{{:_PLACES_IN_CLASS:}}</p></div> -->
+		<div id="class_full" style="display: none; color: red; float: right; margin-right: 40px">{{:_CLASS_IS_FULL:}}</div>
+		<div id="class_empty" style="display: none; color: #77d562; float: right; margin-right: 40px">{{:_CLASS_IS_EMPTY:}}</div>
+		<div class="registration_in_value">
+			<div class="class_places">
+			[:place:]<span id="place_{{:n:}}" style="background: url('images/class_places_{{:class_place_image:}}.png') no-repeat 0 {{:place_type:}}px;"></span>[:place:]
+				<div style="margin-left: 34px">
+					{{:place_6:}}{{:place_7:}}{{:place_8:}}{{:place_9:}}{{:place_10:}}
+				</div>
+				<div style="clear: both"></div>
+				<div style="float: left; width: 34px">
+					{{:place_5:}}{{:place_4:}}{{:place_3:}}{{:place_2:}}{{:place_1:}}
+				</div>
+				<div style="float: left; width: 160px; height: 160px; line-height: 160px">
+					<div class="choosed_class">{{:_GRADE:}}</div>
+				</div>
+				<div style="float: left; width: 34px">
+					{{:place_11:}}{{:place_12:}}{{:place_13:}}{{:place_14:}}{{:place_15:}}
+				</div>
+				
+				<!-- <div style="float: left; margin: 100px 0 0 30px; border-top: 1px solid #e9e9e9">
+					<p><span style="background: #e45033"></span>{{:_RESERVED:}}</p>
+					<p><span style="background: #c0c0c0"></span>{{:_FREE:}}</p>
+					<p><span style="background: #ffc600"></span>{{:_YOUR_PLACE:}}</p>
+				</div> -->
+			</div>
+		</div>
+	</div>
+	
+	<div class="registration_in" style="width: 400px">
+		<div class="registration_in_title"><p>{{:_CHOOSE_PERIOD:}}{{:star:}}</p></div>
+		{{:payment_period_input:}}
+		<div class="registration_in_value">
+			<div class="choose_period" id="1m">1 {{:_MONTH:}}</div>
+			<div class="choose_period" id="3m">3 {{:_MONTH:}}</div>
+			<div class="choose_period" id="9m">{{:_FULL_PROGRAM:}}</div>
+		</div>
+		
+		<div style="clear: both; padding-top: 30px"></div>
+		
+		<div class="registration_in_title"><p>{{:_CHOOSED_MONTHES:}}</p></div>
+		<div class="registration_in_value">
+			<div style="float: left; margin-right: 30px; width: 155px;">{{:choosed_monthes_1:}}</div>
+			<div style="float: left; margin-right: 30px; width: 155px;">{{:choosed_monthes_2:}}</div>
+			[:choosed_monthes:]
+			<div class="choosed_monthes" id="month_{{:month_n:}}">
+				<span></span>{{:month:}}<p class="month_day" id="month_day_{{:month_n:}}"></p>
+			</div>
+			[:choosed_monthes:]
+		</div>
+		
+		<div style="clear: both; padding-top: 30px"></div>
+		<div class="registration_in_title" style="border-top: 1px solid #e9e9e9">
+			<div style="float: left">{{:_PRICE:}}:</div>
+			<div style="float: right" id="payment_price"></div>
+		</div>
+	</div>
+</div>
+		
+<script type="text/javascript">
+//**** calculate price
+function calculate_price(){
+	if($("#grade").val() == ''){
+		$("#payment_price").html('{{:_CHOOSE_CLASS:}}');
+	}
+	else if($("#schedule").val() == ''){
+		$("#payment_price").html('{{:_CHOOSE_SCHEDULE:}}');
+	}
+	else if($("#payment_period").val() == ''){
+		$("#payment_price").html('{{:_CHOOSE_PERIOD:}}');
+	}
+	else{
+		$.get('clear_post.php?module={{:module:}}&page=choose_class&action=calculate_price', 
+					{
+						period: obj_value('payment_period'),
+						schedule: obj_value('schedule'),
+						grade: obj_value('grade'),
+						child_id: '{{:child_id:}}'
+					})
+		.done(function(data){
+			if(data == 'class_full'){
+				$("#class_full").css('display', 'block');
+				$("#schedule").val('');
+			}
+			else{
+				$("#class_full").css('display', 'none');
+				$("#payment_price").html(data)
+			}
+		})
+	}
+}
+
+function choose_group(obj, class_name, field_id){
+	$("."+class_name).removeClass(class_name+'_active');
+	$("."+class_name).removeClass(class_name+'_closed');
+	$(obj).addClass(class_name+'_active');
+	$("#"+field_id).val($(obj).attr("id"));
+	
+	calculate_price();
+}
+
+function class_places(){
+	$.get('clear_post.php?module={{:module:}}&page=choose_class&action=class_places', 
+			{
+				grade: obj_value('grade'), 
+				schedule: obj_value('schedule'),
+				payment_period: obj_value('payment_period')
+			})
+	.done(function(data){
+		info = jQuery.parseJSON(data);
+		for (i = 1; i <= 15; i ++){
+			$("#place_"+i).css('background-position', '0 '+info.place_type[i]+'px');
+		}		
+		
+		$(".choosed_class").html($(".choose_class_active").html());
+		$(".choosed_class").addClass("choosed_class_active");
+		
+		//** select monthes
+		if($("#payment_period").val() !== ''){
+			$(".month_day").html('');
+			$("#month_day_"+info.schedule_first_day['month']).html('('+info.schedule_first_day['day']+')');
+			$("#month_day_"+info.schedule_last_day['month']).html('('+info.schedule_last_day['day']+')');
+			for (i = 1; i <= 12; i ++){
+				if(info.schedule_monthes[i] == 1){
+					$("#month_"+i).addClass("choosed_monthes_active");
+				}
+				else{
+					$("#month_"+i).removeClass("choosed_monthes_active");
+				}
+			}
+		}
+		
+		if(parseInt(info.class_full) == 1 || $("#"+info.schedule).attr('data-places') == 'closed'){
+			$("#class_full").css('display', 'block');
+			$("#class_empty").css('display', 'none');
+			$("#"+obj_value('schedule')).addClass('choose_schedule_closed');
+			$("#schedule").val('');
+		}
+		else if($("#schedule").val() !== ''){
+			$("#class_full").css('display', 'none');
+			$("#class_empty").css('display', 'block');
+		}
+		else{
+			$("#class_empty").css('display', 'none');
+			$("#class_full").css('display', 'none');
+		}
+	})
+}
+
+$(".choose_class").click(function(){
+	$(".choose_schedule").attr('data-places', '');
+	$.get('clear_post.php?module={{:module:}}&page=choose_class&action=class_block_dayes', 
+			{
+				grade: this.id, 
+			})
+	.done(function(data){
+		info = jQuery.parseJSON(data);
+		for(i = 0; i < info.dayes.length; i++){
+			$("#"+info.dayes[i]).attr('data-places', 'closed')
+		}
+		choose_group("#"+info.grade, "choose_class", "grade");
+		
+		class_places();
+	})
+	
+})
+
+$(".choose_schedule").click(function(){
+	if($("#grade").val() == ''){
+		alert('{{:_CHOOSE_CLASS:}}');
+	}
+	else{		
+		choose_group(this, "choose_schedule", "schedule");
+	
+		class_places();
+	}
+})
+
+$(".choose_period").click(function(){
+	choose_group(this, "choose_period", "payment_period");
+	
+	class_places();
+})
+//*****************
+</script>

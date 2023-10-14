@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="style/jquery-ui.css"> 
+<form name="" action="admin.php" method="get">
+<input name="module" type="hidden" value="{{:module:}}">
+<input name="search" type="hidden" value="search">
+<input name="page" type="hidden" value="main">
+
+<table border="0" class="statistic_table" style="width: 950px">
+	<tr>
+		<th width="80" align="center"><b>{{:_CODE:}}</b></th>
+		<th width="180" align="center"><b>{{:_NAME:}}, {{:_SURNAME:}}</b></th>
+		<th width="180" align="center"><b>{{:_EMAIL:}}</b></th>
+		<th width="140" align="center"><b>{{:_STATUS:}}</b></th>
+		<th width="200" align="center" colspan=2><b>{{:_DATE:}}</b></th>
+		<th width="100">&nbsp;</th>
+	</tr>
+	<tr>
+		<td align="center">{{:code:}}</td>
+		<td align="center">{{:name_surname:}}</td>
+		<td align="center">{{:mail:}}</td>
+		<td align="center">{{:status:}}</td>
+		<td align="center">
+			<div class="statistic_search_calendar">
+				<div>{{:date_from:}}</div>
+			</div>
+		</td>
+		<td align="center">
+			<div class="statistic_search_calendar">
+				<div>{{:date_to:}}</div>
+			</div>
+		</td>
+		<td align="center">
+			<input type="submit" value="search" name="user_search" class="reg_table_title">
+		</td>
+	</tr>
+</table>
+
+</form>
+
+<div style="margin: 20px 0 10px; color: #008000">Found <b>{{:users_amount:}}</b> Users</div>
+
+<table border="0" class="statistic_table" style="width: 950px">
+	<tr>
+		<th align="center"><b>{{:_CODE:}}</b></th>
+		<th align="center"><b>{{:_NAME:}}, {{:_SURNAME:}}</b></th>
+		<th align="center"><b>{{:_EMAIL:}}</b></th>
+		<th align="center"><b>{{:_TEL:}}</b></th>
+		<th align="center"><b>{{:_REGISTER_TIME:}}</b></th>
+		[:admin:]
+		<th align="center" colspan="5"><b>action</b></th>
+		[:admin:]
+	</tr>
+	[:users:]
+	<tr>
+		<td align="center">
+			<a href="admin.php?module=users&page=transactions&code={{:id:}}">{{:id:}}</a>
+		</td>
+		<td align="center">{{:surname:}} {{:name:}}</td>
+		<td align="center">{{:mail:}}</td>
+		<td align="center">{{:tel:}}</td>
+		<td align="center">{{:add_time:}}</td>
+		[:admin:]
+		<td align="center">{{:active:}}</td>
+    	<td align="center">
+			<a href="admin.php?module={{:module:}}&page=add_user&user_id={{:id:}}">{{:edit:}}</a>
+		</td>
+    	<td align="center">
+			<a class="popup" href="post.php?module={{:module:}}&page=admin_chng_pass&user_id={{:id:}}"><img src="images/password.gif" alt="{{:_CHANGE_PASSWORD:}}" border="0"></a>
+		</td>
+    	<td align="center">
+    		<a class="popup" href="post.php?module={{:module:}}&page=admin_chng_email&user_id={{:id:}}"><img src="images/email.gif" title="{{:_CHANGE_EMAIL:}}" border="0"></a>
+		</td>
+		<td align="center">
+			<a href="javascript: yes_no('post.php?module={{:module:}}&action=delete_user&id={{:id:}}', '{{:_YES_NO_DELETE:}}')"><img src="images/drop.png" border=0></a>
+		</td>
+		[:admin:]
+	</tr>
+	[:users:]
+</table>
+
+<script type="text/javascript">
+$(function() {
+	$( ".calendar" ).datepicker({
+		  monthNames: [ "{{:_JANUARY:}}", "{{:_FABRUARY:}}", "{{:_MARCH:}}", "{{:_APRIL:}}", "{{:_MAY:}}", "{{:_JUNE:}}", "{{:_JULY:}}", "{{:_AUGUST:}}", "{{:_SEPTEMBER:}}", "{{:_OCTOMBER:}}", "{{:_NOVEMBER:}}", "{{:_DECEMBER:}}" ],
+		  dayNamesMin: [ "{{:_W_OR:}}", "{{:_W_SAM:}}", "{{:_W_OTX:}}", "{{:_W_XUT:}}", "{{:_W_PAR:}}", "{{:_W_SHAB:}}", "{{:_W_KV:}}" ],
+		  firstDay: 1,
+		  dateFormat: "yy-mm-dd"
+		});
+    $( ".calendar" ).datepicker();
+  });
+</script>

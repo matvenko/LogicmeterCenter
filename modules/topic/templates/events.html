@@ -1,0 +1,46 @@
+<link href="style/skitter_events.styles.css" type="text/css" media="all" rel="stylesheet" />
+<script type="text/javascript" language="javascript">
+	$(document).ready(function() {
+		$('.events_skitter').skitter({
+			theme : 'minimalist',
+			numbers_align : 'center',
+			animation : 'fade',
+			labelAnimation: 'left',
+			progressbar : false,
+			numbers : true,
+			//dots: true,
+			navigation : true,
+			preview : true,
+			interval : 6000
+		});
+	});
+</script>
+
+<style>
+.info_slide{
+	left: {{:margin_left:}}px;
+}
+</style>
+
+<div id="content">
+	<div class="border_box">
+		<div class="box_skitter events_skitter">
+			<div class="events_head">
+				<a href="topic-{{:topic_id:}}.html">{{:_EVENTS:}}</a></div>
+			<ul>
+				[:topics:]
+				<li>					
+					<img src="images/space.gif" border=0>
+					<div class="label_text">
+						<div class="events_date"><span style="font-family: sylfaen">{{:topic_slider_date:}}</span></div>
+						<div class="events_title">
+							<a href="topicdetals-{{:topic_id:}}.{{:id:}}.html"><strong>{{:topic_title:}}</strong></a>
+						</div>
+						<!-- <div class="slider_text">{{:topic_short_text:}}</div> -->
+					</div>
+				</li> 
+				[:topics:]
+			</ul>
+		</div>
+	</div>
+</div>

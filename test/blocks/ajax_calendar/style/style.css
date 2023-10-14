@@ -1,0 +1,22 @@
+.cal_days{
+	font-size: 10px;
+	background: #EDF1F4;
+}
+.cal_days td{
+	font-size: 10px;
+	background: #FFF;
+}
+.cal_td{
+	font-size: 10px;
+	background: #FFF;
+}
+
+.cal_days select{
+	font-size: 9px;
+	background: #FFF;
+}
+
+.cal_days option{
+	font-size: 9px;
+	background: #FFF;
+}

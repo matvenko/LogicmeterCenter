@@ -1,0 +1,31 @@
+<div class="text_main">
+{{:head_text:}}
+<div id="check"></div>
+<div id="ok_message"></div>
+<form id="send_message_form" action="clear_post.php?module={{:module:}}" method="post" onsubmit="return false">
+	<div class="letter_title">
+		<p>	{{:_YOURNAME:}}:</p>
+		{{:name:}}
+		<p>{{:_YOUREMAIL:}}:</p>
+		{{:mail:}}
+		<p>{{:_MESSAGE_ADDRESSEE:}}</p>
+		{{:message_addressee:}}
+	</div>
+	
+	<div class="letter_text">
+		<p>
+			{{:_MESSAGE_TEXT:}}:</p>
+		{{:message:}}
+		<input type="hidden" id="send_message" name="send_message" value="0">
+		<input class="send" id="submit" type="submit" value="{{:_SEND:}}" />
+	</div>
+</form>
+</div>
+
+<script type="text/javascript">
+$("#send_message_form").submit(function(){
+	$("#submit").attr('disabled', true);
+	post_call('send_message', this);
+})
+
+</script>

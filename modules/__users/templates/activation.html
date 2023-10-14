@@ -1,0 +1,29 @@
+<div class="statistics_content" style="padding: 50px; min-height: auto">
+[:activation_code_incorrect:]
+<div class="caution">{{:_ACTIVATION_CODE_INCORRECT:}}</div>
+[:activation_code_incorrect:]
+
+[:account_activated:]
+<div class="ok_message" style="display: block; max-width: none">{{:_ACOUNT_ACTIVATED:}}</div>
+<a href="{{:logicmeter_link:}}index.php?module={{:module:}}&page=profile" class="add_button" style="background-image: none; margin: 20px; padding-left: 15px;">{{:_GO_TO_PROFILE:}}</a>
+
+[:account_activated:]
+
+[:need_activation:]
+<div id="ok_message"></div>
+<div class="caution" style="margin-bottom: 30px; text-align: justify">{{:_NEED_ACTIVATION:}}</div>
+
+<input class="answer_button" id="send_activation" type="submit" value="{{:_SEND_ACTIVATION_LINK:}}"/>
+
+<script type="text/javascript">
+$("#send_activation").click(function(){
+	$(this).attr('disabled', true);
+	$.get('clear_post.php?module={{:module:}}&page=activation&action=send_activation')
+		.done(function(message){
+			error_message(message);
+		})
+})
+</script>
+[:need_activation:]
+
+</div>

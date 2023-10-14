@@ -1,0 +1,28 @@
+.form_left{
+	clear: left;
+	float: left;
+	width: 120px;
+	padding: 2px;
+}
+
+.form_right{
+	float: left;
+	padding: 2px;
+}
+
+.tmpl_add_page{
+	padding-bottom: 10px;
+}
+
+.tmpl_page{
+	padding: 5px 2px 5px;
+}
+
+.tmpl_pages_list{
+	float: left;
+}
+
+.tmpl_page_details{
+	float: left;
+	padding-left: 30px;
+}

@@ -1,0 +1,60 @@
+@font-face {
+font-family: BPG Glaho Arial V5;
+font-style:  normal;
+font-weight: normal;
+src: url(/style/BPGGLAH0.eot);
+}
+
+body{
+        font-family: BPG Glaho Arial V5, Arial Unicode MS, Arial Unicode MS;
+        font-size : 12px;
+}
+
+
+a:link, a:visited, a:active{
+        font-family: BPG Glaho Arial V5, Arial Unicode MS;
+        text-decoration : none;
+        color: #000080;
+        font-size: 12px;
+}
+
+.print_left{		font-size: 12px;
+}
+
+a:hover{
+        font-family: BPG Glaho Arial V5, Arial Unicode MS;
+		text-decoration : none;
+        color: #0000AA;
+        font-size: 12px;
+}
+
+.contact{
+        font-family: BPG Glaho Arial V5, Arial Unicode MS;
+		font-size: 13px;
+        color: #2f2d9a;
+}
+
+.edit{
+        font-family: BPG Glaho Arial V5, Arial Unicode MS;
+		color: #A40000;
+        font-size: 10px;
+        font-weight: bold;
+}
+
+.head_text{
+        font-family: BPG Glaho Arial V5, Arial Unicode MS;
+		color: #585858;
+        font-size: 13px;
+        font-weight: bold;
+}
+.more{
+        font-family: BPG Glaho Arial V5, Arial Unicode MS;
+		color: #334A66;
+        font-size: 11px;
+        font-weight: bold;
+}
+
+.usual_tb{
+        font-family: BPG Glaho Arial V5, Arial Unicode MS;
+		font-size: 12px;
+}

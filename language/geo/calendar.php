@@ -1,0 +1,30 @@
+<?php
+define('_CALENDAR', 'მოვლენათა კალენდარი');
+define('_ADD_CALENDAR', 'მოვლენის დამატება');
+define('_DAY', 'დღე');
+define('_MONTH', 'თვე');
+define('_YEAR', 'წელი');
+define('_CALENDAR_ADMINISTRATION', 'კალენდარის ადმინისტრირება');
+define('_IMPORTANT_EVENTS', 'მნიშვნელოვანი მოვლენები');
+define('_MORE', 'სრულად');
+define('_JANUARY', 'იანვარი');
+define('_FABRUARY', 'თებერვალი');
+define('_MARCH', 'მარტი');
+define('_APRIL', 'აპრილი');
+define('_MAY', 'მაისი');
+define('_JUNE', 'ივნისი');
+define('_JULY', 'ივლისი');
+define('_AUGUST', 'აგვისტო');
+define('_SEPTEMBER', 'სექტემბერი');
+define('_OCTOMBER', 'ოქტომბერი');
+define('_NOVEMBER', 'ნოემბერი');
+define('_DECEMBER', 'დეკემბერი');
+define('_W_OR', 'ო');
+define('_W_SAM', 'ს');
+define('_W_OTX', 'ო');
+define('_W_XUT', 'ხ');
+define('_W_PAR', 'პ');
+define('_W_SHAB', 'შ');
+define('_W_KV', 'კ');
+define('', '');
+?>

@@ -1,0 +1,61 @@
+[:default:]
+<div id="statistic_content">
+[:default:]
+
+<div class="chart">
+	<div class="chart_title" style="text-align: left; padding-left: 10px">{{:_CHART_TITLE:}}</div>
+	<div class="chart_left_label">{{:_LEFT_LABEL:}}</div>
+	<div class="chart_chart"><canvas id="canvas" height="450" width="900"></canvas></div>
+	<div class="chart_bottom_label">{{:_BOTTOM_LABEL:}}</div>
+</div>
+<div id="legend_div"></div>
+
+<table class="statistic_table statistic_skill_level_table">
+  <tr>
+    <th style="text-align: left; padding-left: 10px">{{:_SKILLS:}}</th>
+    <th style="width: 150px">{{:_AVARAGE_POINTS:}}</th>
+    <th style="width: 150px">{{:_DONE_TESTS:}}</th>
+    <th style="width: 150px">{{:_TRUE_ANSWERS:}}</th>
+  </tr>
+  [:skills:]
+  <tr>
+    <td class="skill" style="text-align: left; padding-left: 10px">{{:skill_number:}}. {{:skill_name:}}</td>
+    <td style="text-align: center">{{:avarage_point:}}</td>
+    <td style="text-align: center">{{:done_tests:}}</td>
+    <td style="text-align: center; color: {{:progress_color:}}">{{:true_answers:}}%</td>
+  </tr>
+  [:skills:]
+</table>
+
+<script type="text/javascript">
+$(".grade").click(function(){
+	$(".parent_skill_"+$(this).attr('data-id')).toggle(400);
+})
+
+$(".parent_skill").click(function(){
+	$(".skill_"+$(this).attr('data-id')).toggle(400);
+})
+
+//***** chart
+var barChartData = {
+		labels : [{{:labels:}}],
+		datasets : [
+			{
+				label: "",
+				fillColor : "rgba(44,165,222,0.5)",
+				strokeColor : "rgba(44,165,222,0.8)",
+				highlightFill: "rgba(44,165,222,0.75)",
+				highlightStroke: "rgba(44,165,222,1)",
+				data : [{{:chart_data:}}]
+			}
+		]
+
+	}
+
+var ctx = document.getElementById("canvas").getContext("2d");
+var myBar = new Chart(ctx).Bar(barChartData);
+</script>
+
+[:default:]
+</div>
+[:default:]

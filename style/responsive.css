@@ -1,0 +1,133 @@
+@media all and (max-width: 1000px) {
+    .register {
+        padding-top: 20px;
+		text-align: center;
+    }
+    
+	#loginHeader {
+	    height: 530px;
+    	 background: url(../images/pattern_board_bg.png) bottom repeat-x;
+	}
+
+    #loginHeaderContainer {
+        /* background: url(../images/bg_child_at_board.jpg) -1300px no-repeat; */
+        height: 480px;
+    }
+    
+    #head_child{
+		height: 480px;
+    	opacity: 0.4;
+    	background-position: -130px -142px
+    }
+    
+	.loginLogo {
+	    padding-top: 30px;
+	}
+    .userLoginPane{
+		margin-top: 30px;
+    }
+    
+	.subjects {
+	    margin-top: 20px;
+	}
+
+    #loginHeaderWrapper {
+        width: 600px;
+    }
+
+    #about #aboutProject {
+        width: 600px;
+    }
+
+        #about #aboutProject p {
+            width: 650px;
+        }
+
+    #about #aboutIllustration {
+        display: none;
+    }
+
+
+    #news #newsWrapper {
+        width: 600px;
+    }
+
+    #newsWrapper > div {
+        width: 100%;
+    }
+
+
+
+
+        #newsWrapper > div > div {
+            width: 64px;
+            height: 64px;
+        }
+
+            #newsWrapper > div > div > img {
+                width: 64px;
+                height: 64px;
+            }
+
+        #newsWrapper > div > span {
+            font-size: 16px;
+        }
+
+
+        #newsWrapper > div > p {
+            width: 80%;
+            font-size: 20px;
+            margin-left: 90px;
+        }
+
+    #partner {
+        height: 200px;
+    }
+
+    #partnerWrapper p {
+        font-size: 19px;
+    }
+
+
+    #partner #partnerWrapper {
+        width: 600px;
+    }
+
+    #partnerWrapper img {
+        margin-top: 70px;
+    }
+
+
+    #features #featuresWrapper {
+        width: 600px;
+    }
+
+
+    #featuresWrapper p {
+        font-size: 18px;
+    }
+
+    #featuresWrapper .points, #featuresWrapper .certificates, #featuresWrapper .scores {
+        float: left;
+    }
+
+
+
+    #footer #footerWrapper {
+        width: 600px;
+    }
+
+
+    #footerWrapper div {
+        width: 50%;
+        margin-bottom: 50px;
+    }
+
+    #footerWrapper li a {
+        font-size: 18px;
+    }
+
+    #footerWrapper h3 {
+        font-size: 25px;
+    }
+}

@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="style/jquery-ui.css"> 
+<form name="" action="admin.php" method="get">
+<input name="module" type="hidden" value="{{:module:}}">
+<input name="search" type="hidden" value="search">
+<input name="page" type="hidden" value="transactions">
+
+<table border="0" class="statistic_table" style="width: 610px">
+	<tr>
+		<th width="250" align="center"><b>{{:_CODE:}}</b></th>
+		<th width="200" align="center" colspan=2><b>{{:_DATE:}}</b></th>
+		<th width="100">&nbsp;</th>
+	</tr>
+	<tr>
+		<td align="center">{{:code:}}</td>
+		<td align="center">
+			<div class="statistic_search_calendar">
+				<div>{{:date_from:}}</div>
+			</div>
+		</td>
+		<td align="center">
+			<div class="statistic_search_calendar">
+				<div>{{:date_to:}}</div>
+			</div>
+		</td>
+		<td align="center">
+			<input type="submit" value="search" name="user_search" class="reg_table_title">
+		</td>
+	</tr>
+</table>
+</form>
+
+<div>
+<div style="margin: 20px 0 10px; color: #008000">Found <b>{{:transaction_amount:}}</b> Transactions</div>
+	<table class="statistic_table" cellpadding="5" style="width: 610px">
+		<tr>
+			<th style="width: 80px; text-align: left">{{:_CODE:}}</th>
+			<th style="width: 250px; text-align: left">{{:_NAME:}}, {{:_SURNAME:}}</th>
+			<th style="width: 80px; text-align: left">{{:_MONEY:}}</th>
+			<th style="width: 60px; text-align: left">Type</th>
+			<th style="width: 200px; text-align: left">{{:_PAYMENT_TIME:}}</th>
+		</tr>
+		[:list:]
+		<tr>
+			<td>{{:user_id:}}</td>
+			<td>{{:name:}}</td>
+			<td>{{:amount:}} <img src="images/gel.png" border=0 alt="ლ" height="12"></td>
+			<td>{{:bank:}}</td>
+			<td>{{:transaction_time:}}</td>
+		</tr>
+		[:list:]
+		<tr>
+			<th style="width: 80px; text-align: left" colspan="2">{{:_SUM:}}</th>
+			<th style="width: 80px; text-align: left" colspan="3">{{:sum_money:}}</th>
+		</tr>
+	</table>
+</div>
+
+
+<script type="text/javascript">
+$(function() {
+	$( ".calendar" ).datepicker({
+		  monthNames: [ "{{:_JANUARY:}}", "{{:_FABRUARY:}}", "{{:_MARCH:}}", "{{:_APRIL:}}", "{{:_MAY:}}", "{{:_JUNE:}}", "{{:_JULY:}}", "{{:_AUGUST:}}", "{{:_SEPTEMBER:}}", "{{:_OCTOMBER:}}", "{{:_NOVEMBER:}}", "{{:_DECEMBER:}}" ],
+		  dayNamesMin: [ "{{:_W_OR:}}", "{{:_W_SAM:}}", "{{:_W_OTX:}}", "{{:_W_XUT:}}", "{{:_W_PAR:}}", "{{:_W_SHAB:}}", "{{:_W_KV:}}" ],
+		  firstDay: 1,
+		  dateFormat: "yy-mm-dd"
+		});
+    $( ".calendar" ).datepicker();
+  });
+</script>
